@@ -8,4 +8,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordCubit() : super(ForgetPasswordInitial());
   TextEditingController emailController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isValid = true;
+  final List<TextEditingController> controllers =
+  List.generate(4, (index) => TextEditingController());
 }

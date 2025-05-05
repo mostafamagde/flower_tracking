@@ -1,6 +1,6 @@
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
 import 'package:flower_tracking/features/auth/forget_password/presentation/pages/forget_password_screen.dart';
-import 'package:flower_tracking/features/auth/forget_password/presentation/pages/verification_code.dart';
+import 'package:flower_tracking/features/auth/forget_password/presentation/pages/verification_code_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
