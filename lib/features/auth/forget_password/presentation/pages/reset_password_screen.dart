@@ -22,68 +22,71 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       appBar: AppBar(title: Text('Password')),
       body: Padding(
         padding: EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CustomText(
-              topText: "Reset Password",
-              text:
-                  'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least ',
-            ),
-            SizedBox(height: 30),
-            CustomTextFormField(
-              isObscure: viewModel.isObscurePassword,
-              icon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    viewModel.isObscurePassword = !viewModel.isObscurePassword;
-                  });
-                },
-                icon: Icon(
-                  viewModel.isObscurePassword
-                      ? Icons.visibility_off_rounded
-                      : Icons.visibility_rounded,
-                ),
+        child: Form(
+          key: viewModel.formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomText(
+                topText: "Reset Password",
+                text:
+                    'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least ',
               ),
-              labelText: 'New Password',
-              hintText: "Enter Your Password",
-              keyboardType: TextInputType.name,
-              controller: viewModel.passwordController,
-              validator: (val) => AppValidators.validatePassword(val),
-            ),
-            SizedBox(height: 30),
-            CustomTextFormField(
-              isObscure: viewModel.isObscureConfirmPassword,
-              icon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    viewModel.isObscureConfirmPassword =
-                        !viewModel.isObscureConfirmPassword;
-                  });
-                },
-                icon: Icon(
-                  viewModel.isObscureConfirmPassword
-                      ? Icons.visibility_off_rounded
-                      : Icons.visibility_rounded,
+              SizedBox(height: 30),
+              CustomTextFormField(
+                isObscure: viewModel.isObscurePassword,
+                icon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      viewModel.isObscurePassword = !viewModel.isObscurePassword;
+                    });
+                  },
+                  icon: Icon(
+                    viewModel.isObscurePassword
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
+                  ),
                 ),
+                labelText: 'New Password',
+                hintText: "Enter Your Password",
+                keyboardType: TextInputType.name,
+                controller: viewModel.passwordController,
+                validator: (val) => AppValidators.validatePassword(val),
               ),
-              labelText: 'Confirm Password',
-              hintText: "Confirm Password",
-              keyboardType: TextInputType.name,
-              controller: viewModel.confirmPasswordController,
-              validator: (val) => AppValidators.validatePassword(val),
-            ),
-            SizedBox(height: 40),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor
+              SizedBox(height: 30),
+              CustomTextFormField(
+                isObscure: viewModel.isObscureConfirmPassword,
+                icon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      viewModel.isObscureConfirmPassword =
+                          !viewModel.isObscureConfirmPassword;
+                    });
+                  },
+                  icon: Icon(
+                    viewModel.isObscureConfirmPassword
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
+                  ),
                 ),
-                onPressed: () {
-                  if(viewModel.formKey.currentState!=null) {
-                    //todo: change password
-                  }
-                }, child: Text('Confirm'))
-          ],
+                labelText: 'Confirm Password',
+                hintText: "Confirm Password",
+                keyboardType: TextInputType.name,
+                controller: viewModel.confirmPasswordController,
+                validator: (val) => AppValidators.validatePassword(val),
+              ),
+              SizedBox(height: 40),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor
+                  ),
+                  onPressed: () {
+                    if(viewModel.formKey.currentState!.validate()) {
+                      //todo: change password
+                    }
+                  }, child: Text('Confirm'))
+            ],
+          ),
         ),
       ),
     );

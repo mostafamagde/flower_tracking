@@ -42,7 +42,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     backgroundColor: AppColors.primaryColor
                   ),
                   onPressed: () {
-                    if(viewModel.formKey.currentState!=null) {
+                    if(viewModel.formKey.currentState!.validate()) {
                       Navigator.pushNamed(context, RoutesNames.verificationCode);
                     }
               }, child: Text('Confirm'))
