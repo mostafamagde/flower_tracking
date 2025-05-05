@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/forget_password/presentation/pages/reset_password_screen.dart';
 import '../../features/layout/presentation/views/layout_view.dart';
 import '../navigation_cubit/navigation_cubit.dart';
 
@@ -25,6 +26,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>  ForgetPasswordScreen());
       case RoutesNames.verificationCode:
         return MaterialPageRoute(builder: (_) =>  VerificationCodeScreen());
+      case RoutesNames.resetPassword:
+        return MaterialPageRoute(builder: (_) =>  ResetPasswordScreen());
 
 
 
