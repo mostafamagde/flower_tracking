@@ -1,4 +1,5 @@
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
+import 'package:flower_tracking/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,15 +13,14 @@ class RouteGenerator {
       case RoutesNames.layout:
         return MaterialPageRoute(
           builder:
-              (context) =>
-              BlocProvider(
+              (context) => BlocProvider(
                 create: (context) => NavigationCubit(),
                 child: LayoutView(),
               ),
           settings: settings,
         );
-
-
+      case RoutesNames.onboarding:
+        return MaterialPageRoute(builder: (context) => OnboardingScreen());
 
       default:
         return MaterialPageRoute(
