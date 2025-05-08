@@ -5,10 +5,12 @@ import 'package:flower_tracking/features/auth/forget_password/presentation/widge
 import 'package:flower_tracking/features/auth/forget_password/presentation/widgets/input_num.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/di/di.dart';
+
 class VerificationCodeScreen extends StatelessWidget {
   VerificationCodeScreen({super.key});
 
-  ForgetPasswordCubit viewModel = ForgetPasswordCubit();
+  ForgetPasswordCubit viewModel = getIt.get<ForgetPasswordCubit>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

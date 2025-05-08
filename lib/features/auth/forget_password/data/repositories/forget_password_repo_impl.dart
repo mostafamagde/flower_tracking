@@ -16,8 +16,8 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   Future<Result<ForgetPasswordEntity>> forgetPassword(String email) async {
     try {
       return await dataSource.forgetPassword(email);
-    } on DioException catch (ex){
-      return Error(NetworkError(ex.message));
+    } on DioException catch (ex) {
+      return Error(ClientError(errorModel: ex.response?.data));
     }
   }
 }

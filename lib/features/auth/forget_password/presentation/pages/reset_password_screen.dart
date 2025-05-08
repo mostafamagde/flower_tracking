@@ -1,4 +1,5 @@
 import 'package:flower_tracking/core/app_consts/app_validators.dart';
+import 'package:flower_tracking/core/di/di.dart';
 import 'package:flower_tracking/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:flower_tracking/features/auth/forget_password/presentation/widgets/custom_form_field.dart';
 import 'package:flower_tracking/features/auth/forget_password/presentation/widgets/custom_text.dart';
@@ -14,7 +15,8 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  ForgetPasswordCubit viewModel = ForgetPasswordCubit();
+
+  ForgetPasswordCubit viewModel = getIt.get<ForgetPasswordCubit>();
 
   @override
   Widget build(BuildContext context) {

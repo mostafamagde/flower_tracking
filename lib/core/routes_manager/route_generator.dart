@@ -33,7 +33,10 @@ class RouteGenerator {
 
       default:
         return MaterialPageRoute(
-          builder: (context) => const LayoutView(),
+          builder: (context) => BlocProvider(
+            create: (context) => NavigationCubit(),
+            child: LayoutView(),
+          ),
           settings: settings,
         );
     }

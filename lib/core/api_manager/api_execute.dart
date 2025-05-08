@@ -23,7 +23,7 @@ class ApiExecute {
             var responseCode = ex.response?.statusCode ?? 0;
             var errorModel = ErrorModel.fromJson(ex.response?.data);
             if (responseCode >= 400 && responseCode < 500) {
-              return Error(ClientError(errorModel));
+              return Error(ClientError(errorModel: errorModel));
             }
             if (responseCode >= 500 && responseCode < 600) {
               return Error(ServerError(errorModel));

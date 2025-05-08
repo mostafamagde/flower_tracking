@@ -2,7 +2,6 @@ import '../models/erorr_data.dart';
 
 class ServerError implements Exception {
   ErrorModel? errorModel;
-
   ServerError(this.errorModel);
 }
 
@@ -13,10 +12,17 @@ class NetworkError implements Exception {
 }
 
 class ClientError implements Exception {
-  ErrorModel? errorModel;
+  final ErrorModel? errorModel;
 
-  ClientError(this.errorModel);
+  ClientError({this.errorModel});
+
+  @override
+  String toString() {
+    return errorModel?.toString() ?? 'Unknown client error';
+  }
 }
+
+
 
 class ServerSideError implements Exception {
   ErrorModel? errorModel;
