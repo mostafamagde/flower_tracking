@@ -19,6 +19,83 @@ class _RestClient implements RestClient {
 
   final ParseErrorLogger? errorLogger;
 
+  @override
+  Future<ApplyResponseDto> applyDriver(
+    String country,
+    String firstName,
+    String lastName,
+    String vehicleType,
+    String vehicleNumber,
+    File vehicleLicense,
+    String email,
+    String phone,
+    String nid,
+    File nIDImg,
+    String password,
+    String rePassword,
+    String gender,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry('country', country));
+    _data.fields.add(MapEntry('firstName', firstName));
+    _data.fields.add(MapEntry('lastName', lastName));
+    _data.fields.add(MapEntry('vehicleType', vehicleType));
+    _data.fields.add(MapEntry('vehicleNumber', vehicleNumber));
+    _data.files.add(
+      MapEntry(
+        'vehicleLicense',
+        MultipartFile.fromFileSync(
+          vehicleLicense.path,
+          filename: vehicleLicense.path.split(Platform.pathSeparator).last,
+          contentType: DioMediaType.parse('image/jpeg'),
+        ),
+      ),
+    );
+    _data.fields.add(MapEntry('email', email));
+    _data.fields.add(MapEntry('phone', phone));
+    _data.fields.add(MapEntry('NID', nid));
+    _data.files.add(
+      MapEntry(
+        'NIDImg',
+        MultipartFile.fromFileSync(
+          nIDImg.path,
+          filename: nIDImg.path.split(Platform.pathSeparator).last,
+          contentType: DioMediaType.parse('image/jpeg'),
+        ),
+      ),
+    );
+    _data.fields.add(MapEntry('password', password));
+    _data.fields.add(MapEntry('rePassword', rePassword));
+    _data.fields.add(MapEntry('gender', gender));
+    final _options = _setStreamType<ApplyResponseDto>(
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            'apply',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ApplyResponseDto _value;
+    try {
+      _value = ApplyResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

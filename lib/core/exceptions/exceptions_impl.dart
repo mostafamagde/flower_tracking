@@ -1,25 +1,41 @@
-import '../models/erorr_data.dart';
+import 'package:flower_tracking/core/models/erorr_data.dart';
 
 class ServerError implements Exception {
-  ErrorModel? errorModel;
+  final ErrorModel? errorModel;  // قد يحتوي على تفاصيل الخطأ من الخادم
 
   ServerError(this.errorModel);
+
+  String getErrorMessage() {
+    return errorModel?.message ?? "An unexpected server error occurred";
+  }
 }
 
 class NetworkError implements Exception {
-  String? message;
+  final String? message;  // رسالة مخصصة لخطأ الشبكة
 
   NetworkError(this.message);
+
+  String getErrorMessage() {
+    return message ?? "Network error occurred. Please check your connection.";
+  }
 }
 
 class ClientError implements Exception {
-  ErrorModel? errorModel;
+  final ErrorModel? errorModel;  // قد يحتوي على تفاصيل الخطأ من العميل
 
   ClientError(this.errorModel);
+
+  String getErrorMessage() {
+    return errorModel?.message ?? "Client error occurred. Please try again.";
+  }
 }
 
 class ServerSideError implements Exception {
-  ErrorModel? errorModel;
+  final ErrorModel? errorModel;  // تفاصيل الخطأ من الخادم
 
   ServerSideError(this.errorModel);
+
+  String getErrorMessage() {
+    return errorModel?.message ?? "Server-side error occurred.";
+  }
 }
