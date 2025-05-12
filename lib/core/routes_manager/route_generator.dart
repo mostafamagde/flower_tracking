@@ -1,7 +1,5 @@
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
-import 'package:flower_tracking/features/auth/apply_screen/presentation/pages/apply_screen.dart';
-import 'package:flower_tracking/features/auth/apply_screen/presentation/pages/done_screen.dart';
-import 'package:flower_tracking/features/auth/login_screen_test.dart';
+import 'package:flower_tracking/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +34,8 @@ class RouteGenerator {
           builder: (context) => const LoginScreenTest(),
           settings: settings,
         );
+      case RoutesNames.onboarding:
+        return MaterialPageRoute(builder: (context) => OnboardingScreen());
 
       default:
         return MaterialPageRoute(

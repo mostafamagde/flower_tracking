@@ -1,3 +1,4 @@
+import 'package:flower_tracking/core/routes_manager/routes_names.dart';
 import 'package:flower_tracking/core/di/di.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Flower Tracking',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: '/doneScreen',
       onGenerateRoute: RouteGenerator.generateRoutes,
+      initialRoute: RoutesNames.onboarding,
     );
   }
 }
