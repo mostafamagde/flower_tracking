@@ -195,7 +195,7 @@ class _ContantScreenState extends State<ContantScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+
                             state.status == Status.loading
                                 ? Center(child:  CircularProgressIndicator(color:AppColors.primaryColor,)) // Show loading indicator
                                 : CustomButton(
