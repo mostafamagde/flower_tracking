@@ -1,8 +1,9 @@
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/login/presentation/screens/home _screen.dart';
+import '../../features/auth/login/presentation/screens/login_screen.dart';
 import '../../features/layout/presentation/views/layout_view.dart';
 import '../navigation_cubit/navigation_cubit.dart';
 
@@ -19,7 +20,16 @@ class RouteGenerator {
               ),
           settings: settings,
         );
-
+      case RoutesNames.login:
+        return MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+          settings: settings,
+        );
+      case RoutesNames.home:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+          settings: settings,
+        );
 
 
       default:

@@ -38,11 +38,13 @@ dependencies:
   flutter_bloc: ^9.1.1
   injectable: ^2.5.0
   dio: ^5.8.0+1
-
+  google_fonts: ^6.2.1
   equatable: ^2.0.7
   retrofit: ^4.4.2
   retrofit_generator: ^9.1.9
-
+  shared_preferences:
+  awesome_snackbar_content:
+  flutter_secure_storage: ^9.0.0
 
 
 

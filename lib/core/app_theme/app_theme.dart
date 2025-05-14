@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../app_colors/colors.dart';
 
@@ -28,6 +29,29 @@ class AppTheme {
         fontSize: 14,
         fontWeight: FontWeight.w500,
         fontFamily: AppColors.fontFamily,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: GoogleFonts.inter(
+        color: AppColors.greyColor,
+        fontWeight: FontWeight.w400,
+      ),
+      hintStyle: GoogleFonts.inter(
+        color: AppColors.textField,
+        fontSize: 14,
+      ),
+      errorStyle: GoogleFonts.inter(
+        color: AppColors.error,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+        borderSide: BorderSide(color: AppColors.greyColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.greyColor),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.greyColor),
       ),
     ),
   );

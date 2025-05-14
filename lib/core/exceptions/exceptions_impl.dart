@@ -16,6 +16,10 @@ class ClientError implements Exception {
   ErrorModel? errorModel;
 
   ClientError(this.errorModel);
+  @override
+  toString() {
+    return errorModel?.message ?? "this client error";
+  }
 }
 
 class ServerSideError implements Exception {
