@@ -1,6 +1,8 @@
 import 'package:flower_tracking/core/app_colors/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/routes_manager/routes_names.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -71,7 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushReplacementNamed(context, RoutesNames.login);
+                    Navigator.pushReplacementNamed(context, RoutesNames.login);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink,
@@ -91,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Navigator.pushReplacementNamed(context, RoutesNames.apply);
+                     Navigator.pushNamed(context, RoutesNames.applyScreen);
                   },
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),

@@ -3,11 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
-import 'dart:io' as _i5;
+import 'dart:async' as _i5;
+import 'dart:io' as _i7;
 
-import 'package:flower_tracking/core/api_manager/api_manager.dart' as _i3;
+import 'package:flower_tracking/core/api_manager/api_manager.dart' as _i4;
 import 'package:flower_tracking/features/auth/apply_screen/data/models/response/apply_response_dto.dart'
+    as _i3;
+import 'package:flower_tracking/features/auth/login/data/model/request/login_request_dto.dart'
+    as _i6;
+import 'package:flower_tracking/features/auth/login/data/model/response/login_response_dto.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -25,32 +29,51 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeApplyResponseDto_0 extends _i1.SmartFake
-    implements _i2.ApplyResponseDto {
-  _FakeApplyResponseDto_0(Object parent, Invocation parentInvocation)
+class _FakeLoginResponseDto_0 extends _i1.SmartFake
+    implements _i2.LoginResponseDto {
+  _FakeLoginResponseDto_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeApplyResponseDto_1 extends _i1.SmartFake
+    implements _i3.ApplyResponseDto {
+  _FakeApplyResponseDto_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [RestClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRestClient extends _i1.Mock implements _i3.RestClient {
+class MockRestClient extends _i1.Mock implements _i4.RestClient {
   MockRestClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.ApplyResponseDto> applyDriver(
+  _i5.Future<_i2.LoginResponseDto> login(_i6.LoginRequestDto? request) =>
+      (super.noSuchMethod(
+            Invocation.method(#login, [request]),
+            returnValue: _i5.Future<_i2.LoginResponseDto>.value(
+              _FakeLoginResponseDto_0(
+                this,
+                Invocation.method(#login, [request]),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.LoginResponseDto>);
+
+  @override
+  _i5.Future<_i3.ApplyResponseDto> applyDriver(
     String? country,
     String? firstName,
     String? lastName,
     String? vehicleType,
     String? vehicleNumber,
-    _i5.File? vehicleLicense,
+    _i7.File? vehicleLicense,
     String? email,
     String? phone,
     String? nid,
-    _i5.File? nIDImg,
+    _i7.File? nIDImg,
     String? password,
     String? rePassword,
     String? gender,
@@ -71,8 +94,8 @@ class MockRestClient extends _i1.Mock implements _i3.RestClient {
               rePassword,
               gender,
             ]),
-            returnValue: _i4.Future<_i2.ApplyResponseDto>.value(
-              _FakeApplyResponseDto_0(
+            returnValue: _i5.Future<_i3.ApplyResponseDto>.value(
+              _FakeApplyResponseDto_1(
                 this,
                 Invocation.method(#applyDriver, [
                   country,
@@ -92,5 +115,5 @@ class MockRestClient extends _i1.Mock implements _i3.RestClient {
               ),
             ),
           )
-          as _i4.Future<_i2.ApplyResponseDto>);
+          as _i5.Future<_i3.ApplyResponseDto>);
 }

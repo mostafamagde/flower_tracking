@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flower_tracking/core/models/user_model.dart';
 
 import 'package:injectable/injectable.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'api_manager.dart';
 
@@ -19,13 +18,6 @@ abstract class DioInjection {
     dio.options.headers["Content-Type"] = "multipart/form-data";
     dio.options.contentType = "multipart/form-data";
 
-    dio.interceptors.add(PrettyDioLogger(
-      requestBody: true,
-      request: true,
-      requestHeader: true,
-      responseBody: true,
-      responseHeader: true,
-    ));
 
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {

@@ -11,17 +11,17 @@ import 'api_constant.dart';
 
 part 'api_manager.g.dart';
 
-@RestApi(baseUrl: ApiConstant.baseUrl)
+@RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
   @POST(ApiConstants.signInApi)
   Future<LoginResponseDto> login(@Body() LoginRequestDto request);
 
-  @POST(ApiConstant.applyDriver)
+  @POST(ApiConstants.applyDriver)
   @MultiPart()
   @MultiPart()
-  @POST(ApiConstant.applyDriver)
+  @POST(ApiConstants.applyDriver)
   Future<ApplyResponseDto> applyDriver(
       @Part(name: "country") String country,
       @Part(name: "firstName") String firstName,

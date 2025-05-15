@@ -13,16 +13,6 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/auth/login/data/data_source_contract/login_data_source_contract.dart'
-    as _i230;
-import '../../features/auth/login/data/data_source_impl/login_data_source_impl.dart'
-    as _i1;
-import '../../features/auth/login/data/repository_impl/login_repository_impl.dart'
-    as _i768;
-import '../../features/auth/login/domain/repository_contract/login_repository_contract.dart'
-    as _i689;
-import '../../features/auth/login/domain/use_case/login_use_case.dart' as _i630;
-import '../../features/auth/login/presentation/cubit/login_cubit.dart' as _i126;
 import '../../features/auth/apply_screen/data/datasources/contract/apply_contract_datasource.dart'
     as _i954;
 import '../../features/auth/apply_screen/data/datasources/remote/apply_remote_datasource.dart'
@@ -35,6 +25,16 @@ import '../../features/auth/apply_screen/domain/usecases/apply_driver_use_case.d
     as _i510;
 import '../../features/auth/apply_screen/presentation/cubit/apply_screen_cubit.dart'
     as _i936;
+import '../../features/auth/login/data/data_source_contract/login_data_source_contract.dart'
+    as _i230;
+import '../../features/auth/login/data/data_source_impl/login_data_source_impl.dart'
+    as _i1;
+import '../../features/auth/login/data/repository_impl/login_repository_impl.dart'
+    as _i768;
+import '../../features/auth/login/domain/repository_contract/login_repository_contract.dart'
+    as _i689;
+import '../../features/auth/login/domain/use_case/login_use_case.dart' as _i630;
+import '../../features/auth/login/presentation/cubit/login_cubit.dart' as _i126;
 import '../api_manager/api_di.dart' as _i285;
 import '../api_manager/api_manager.dart' as _i266;
 
@@ -56,14 +56,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i763.ApplyRepository>(
       () => _i18.ApplyRepoImpl(gh<_i954.ApplyContractDatasource>()),
     );
+    gh.factory<_i230.LoginDataSourceContract>(
+      () => _i1.LoginDataSourceImpl(gh<_i266.RestClient>()),
+    );
     gh.factory<_i510.ApplyDriverUseCase>(
       () => _i510.ApplyDriverUseCase(gh<_i763.ApplyRepository>()),
     );
     gh.factory<_i936.ApplyScreenCubit>(
       () => _i936.ApplyScreenCubit(gh<_i510.ApplyDriverUseCase>()),
-    );
-    gh.factory<_i230.LoginDataSourceContract>(
-      () => _i1.LoginDataSourceImpl(gh<_i266.RestClient>()),
     );
     gh.factory<_i689.LoginRepositoryContract>(
       () => _i768.LoginRepositoryImpl(gh<_i230.LoginDataSourceContract>()),
