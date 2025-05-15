@@ -38,10 +38,16 @@ dependencies:
   flutter_bloc: ^9.1.1
   injectable: ^2.5.0
   dio: ^5.8.0+1
-
+  google_fonts: ^6.2.1
   equatable: ^2.0.7
   retrofit: ^4.4.2
-  retrofit_generator: ^9.1.9
+  retrofit_generator: ^9.2.0
+  shared_preferences:
+  awesome_snackbar_content:
+  flutter_secure_storage: ^9.0.0
+
+
+
 
   json_annotation: ^4.9.0
   get_it: ^8.0.3
@@ -67,6 +73,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
