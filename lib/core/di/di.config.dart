@@ -23,6 +23,18 @@ import '../../features/auth/login/domain/repository_contract/login_repository_co
     as _i689;
 import '../../features/auth/login/domain/use_case/login_use_case.dart' as _i630;
 import '../../features/auth/login/presentation/cubit/login_cubit.dart' as _i126;
+import '../../features/auth/apply_screen/data/datasources/contract/apply_contract_datasource.dart'
+    as _i954;
+import '../../features/auth/apply_screen/data/datasources/remote/apply_remote_datasource.dart'
+    as _i894;
+import '../../features/auth/apply_screen/data/repositories/apply_repo_impl.dart'
+    as _i18;
+import '../../features/auth/apply_screen/domain/repositories/apply_driver_repo.dart'
+    as _i763;
+import '../../features/auth/apply_screen/domain/usecases/apply_driver_use_case.dart'
+    as _i510;
+import '../../features/auth/apply_screen/presentation/cubit/apply_screen_cubit.dart'
+    as _i936;
 import '../api_manager/api_di.dart' as _i285;
 import '../api_manager/api_manager.dart' as _i266;
 
@@ -37,6 +49,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => dioInjection.injectDio());
     gh.singleton<_i266.RestClient>(
       () => dioInjection.injectRestClient(gh<_i361.Dio>()),
+    );
+    gh.lazySingleton<_i954.ApplyContractDatasource>(
+      () => _i894.ApplyRemoteDatasourceImpl(gh<_i266.RestClient>()),
+    );
+    gh.factory<_i763.ApplyRepository>(
+      () => _i18.ApplyRepoImpl(gh<_i954.ApplyContractDatasource>()),
+    );
+    gh.factory<_i510.ApplyDriverUseCase>(
+      () => _i510.ApplyDriverUseCase(gh<_i763.ApplyRepository>()),
+    );
+    gh.factory<_i936.ApplyScreenCubit>(
+      () => _i936.ApplyScreenCubit(gh<_i510.ApplyDriverUseCase>()),
     );
     gh.factory<_i230.LoginDataSourceContract>(
       () => _i1.LoginDataSourceImpl(gh<_i266.RestClient>()),

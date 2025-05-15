@@ -95,14 +95,14 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                   },
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    side: const BorderSide(color: AppColors.greyColor2),
+                    side:  BorderSide(color: AppColors.darkgreyColor),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text(
+                  child:  Text(
                     'Apply now',
-                    style: TextStyle(fontSize: 16, color: AppColors.greyColor2),
+                    style: TextStyle(fontSize: 16, color: AppColors.darkgreyColor),
                   ),
                 ),
               ),

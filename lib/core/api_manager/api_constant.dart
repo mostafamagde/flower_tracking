@@ -3,4 +3,5 @@ class ApiConstants {
   static const String signInApi = "signin";
 
 
+  static const String applyDriver = "apply";
 }

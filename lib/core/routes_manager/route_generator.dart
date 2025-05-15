@@ -1,4 +1,9 @@
+import 'package:flower_tracking/core/navigation_cubit/navigation_cubit.dart';
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
+import 'package:flower_tracking/features/auth/apply_screen/presentation/pages/apply_screen.dart';
+import 'package:flower_tracking/features/auth/apply_screen/presentation/pages/done_screen.dart';
+import 'package:flower_tracking/features/auth/login_screen_test.dart';
+import 'package:flower_tracking/features/layout/presentation/views/layout_view.dart';
 import 'package:flower_tracking/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +24,21 @@ class RouteGenerator {
                 create: (context) => NavigationCubit(),
                 child: LayoutView(),
               ),
+          settings: settings,
+        );
+      case RoutesNames.applyScreen:
+        return CupertinoPageRoute(
+          builder: (context) => const ApplyScreen(),
+          settings: settings,
+        );
+        case RoutesNames.doneScreen:
+        return CupertinoPageRoute(
+          builder: (context) => const DoneScreen(),
+          settings: settings,
+        );
+        case RoutesNames.loginScreenTest:
+        return CupertinoPageRoute(
+          builder: (context) => const LoginScreenTest(),
           settings: settings,
         );
       case RoutesNames.login:

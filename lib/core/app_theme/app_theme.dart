@@ -26,6 +26,12 @@ class AppTheme {
       ),
       titleMedium: TextStyle(
         color: Color(0xFF878787),
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        fontFamily: AppColors.fontFamily,
+      ),
+      titleSmall: TextStyle(
+        color: AppColors.greyColor,
         fontSize: 14,
         fontWeight: FontWeight.w500,
         fontFamily: AppColors.fontFamily,
