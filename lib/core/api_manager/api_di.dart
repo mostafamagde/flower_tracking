@@ -11,13 +11,24 @@ abstract class DioInjection {
   Dio injectDio() {
     var dio = Dio(
       BaseOptions(
-        connectTimeout: Duration(seconds: 60),
-        headers: {
-          "token": UserModel.instance.token,
-          'Authorization': 'Bearer ${UserModel.instance.token}',
-        },
+        connectTimeout: const Duration(seconds: 60),
       ),
     );
+
+    dio.options.headers["Content-Type"] = "multipart/form-data";
+    dio.options.contentType = "multipart/form-data";
+
+
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        final token = UserModel.instance.token;
+        print("Sending request with token: $token");
+        if (token != null && token.isNotEmpty) {
+          options.headers["Authorization"] = "Bearer $token";
+        }
+        return handler.next(options);
+      },
+    ));
 
     return dio;
   }
@@ -26,4 +37,5 @@ abstract class DioInjection {
   RestClient injectRestClient(Dio dio) {
     return RestClient(dio);
   }
+
 }
