@@ -3,12 +3,12 @@ import 'package:flower_tracking/core/app_consts/app_validators.dart';
 import 'package:flower_tracking/core/di/di.dart';
 import 'package:flower_tracking/core/routes_manager/routes_names.dart';
 import 'package:flower_tracking/core/utils/status.dart';
-import 'package:flower_tracking/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:flower_tracking/features/auth/forget_password/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/dialog_utils.dart';
+import '../cubit/forget_password/forget_password_cubit.dart';
 import '../widgets/custom_form_field.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -34,7 +34,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                     DialogUtils.showError(context, state.forgetError ?? '');
                   }
                   else if (state.forgetState == Status.success) {
-                    Navigator.pushNamed(context, RoutesNames.verificationCode);
+                    Navigator.pushNamed(context, RoutesNames.verificationCode,
+                      arguments: viewModel.emailController.text,);
                   }
                 },
                 child: Padding(
@@ -63,10 +64,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 backgroundColor: AppColors.primaryColor
                             ),
                             onPressed: () {
-                              print("email: ${viewModel.emailController.text}");
                               if (viewModel.formKey.currentState!.validate()) {
                                 viewModel.forgetPassword(
-                                    viewModel.emailController.text);
+                                    viewModel.emailController.text.trim());
                               }
 
                             }, child: Text('Confirm'))

@@ -3,6 +3,8 @@ import 'package:flower_tracking/core/exceptions/exceptions_impl.dart';
 import 'package:flower_tracking/core/models/result.dart';
 import 'package:flower_tracking/features/auth/forget_password/data/data_sources/contract/forget_password_data_source_contract.dart';
 import 'package:flower_tracking/features/auth/forget_password/domain/entities/forget_password_entity.dart';
+import 'package:flower_tracking/features/auth/forget_password/domain/entities/reset_password_entity.dart';
+import 'package:flower_tracking/features/auth/forget_password/domain/entities/verify_code_entity.dart';
 import 'package:flower_tracking/features/auth/forget_password/domain/repositories/forget_password_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,6 +18,25 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   Future<Result<ForgetPasswordEntity>> forgetPassword(String email) async {
     try {
       return await dataSource.forgetPassword(email);
+    } on DioException catch (ex) {
+      return Error(ClientError(errorModel: ex.response?.data));
+    }
+  }
+
+  @override
+  Future<Result<VerifyCodeEntity>> verifyCode(String resetCode) async {
+    try {
+      return await dataSource.verifyCode(resetCode);
+    } on DioException catch (ex) {
+      return Error(ClientError(errorModel: ex.response?.data));
+    }
+  }
+
+  @override
+  Future<Result<ResetPasswordEntity>> restPassword(String email,
+      newPassword) async {
+    try {
+      return await dataSource.restPassword(email, newPassword);
     } on DioException catch (ex) {
       return Error(ClientError(errorModel: ex.response?.data));
     }

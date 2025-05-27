@@ -8,13 +8,15 @@ class ForgetPasswordState {
   const ForgetPasswordState({
     this.forgetState = Status.loading,
     this.forgetEntity,
-    this.forgetError
+    this.forgetError,
   });
 
   ForgetPasswordState copyWith({
     Status? forgetState,
     String? forgetError,
     ForgetPasswordEntity? forgetEntity,
+    ResetPasswordEntity? resetEntity,
+    VerifyCodeEntity? verifyEntity,
   }) {
     return ForgetPasswordState(
       forgetState: forgetState ?? this.forgetState,
@@ -22,8 +24,4 @@ class ForgetPasswordState {
       forgetEntity: forgetEntity ?? this.forgetEntity,
     );
   }
-
 }
-
-
-
