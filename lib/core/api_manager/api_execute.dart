@@ -18,7 +18,6 @@ class ApiExecute {
         case DioExceptionType.connectionError:
         case DioExceptionType.badCertificate:
           return Error(NetworkError("Check your internet connection"));
-
         case DioExceptionType.badResponse:
           if (responseCode == null) {
             return Error(NetworkError("No status code from server"));
