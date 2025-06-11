@@ -9,19 +9,19 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: ForgetPasswordDataSourceContract)
 class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSourceContract {
-  RestClient apiClient;
-  ForgetPasswordDataSourceImpl({required this.apiClient});
+  final RestClient _apiClient;
+  ForgetPasswordDataSourceImpl({required RestClient apiClient}) : _apiClient = apiClient;
   @override
   Future<Result<ForgetPasswordEntity>> forgetPassword(String email) async{
     return ApiExecute.executeApi<ForgetPasswordEntity>(() async{
-      return await apiClient.forgetPassword({"email": email});
+      return await _apiClient.forgetPassword({"email": email});
     },);
   }
 
   @override
   Future<Result<ResetPasswordEntity>> restPassword(String email, newPassword) async {
     return ApiExecute.executeApi<ResetPasswordEntity>(() async {
-      return await apiClient.resetPassword({
+      return await _apiClient.resetPassword({
         "email": email,
         "newPassword": newPassword,
       });
@@ -31,7 +31,7 @@ class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSourceContract {
   @override
   Future<Result<VerifyCodeEntity>> verifyCode(String code) async {
     return ApiExecute.executeApi<VerifyCodeEntity>(() async {
-      return await apiClient.verifyCode({"resetCode": code});
+      return await _apiClient.verifyCode({"resetCode": code});
     },);
   }
 

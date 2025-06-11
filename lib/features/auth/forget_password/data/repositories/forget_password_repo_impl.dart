@@ -8,6 +8,8 @@ import 'package:flower_tracking/features/auth/forget_password/domain/entities/ve
 import 'package:flower_tracking/features/auth/forget_password/domain/repositories/forget_password_repo.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/api_manager/api_call_handler.dart';
+
 @Injectable(as: ForgetPasswordRepo)
 class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   final ForgetPasswordDataSourceContract dataSource;
@@ -16,29 +18,20 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
 
   @override
   Future<Result<ForgetPasswordEntity>> forgetPassword(String email) async {
-    try {
-      return await dataSource.forgetPassword(email);
-    } on DioException catch (ex) {
-      return Error(ClientError(errorModel: ex.response?.data));
-    }
+    return ApiCallHandler.safeApiCall(() => dataSource.forgetPassword(email));
   }
 
   @override
-  Future<Result<VerifyCodeEntity>> verifyCode(String resetCode) async {
-    try {
-      return await dataSource.verifyCode(resetCode);
-    } on DioException catch (ex) {
-      return Error(ClientError(errorModel: ex.response?.data));
-    }
+  Future<Result<ResetPasswordEntity>> restPassword(String email, newPassword) {
+    return ApiCallHandler.safeApiCall(() => dataSource.restPassword(email,newPassword));
   }
 
   @override
-  Future<Result<ResetPasswordEntity>> restPassword(String email,
-      newPassword) async {
-    try {
-      return await dataSource.restPassword(email, newPassword);
-    } on DioException catch (ex) {
-      return Error(ClientError(errorModel: ex.response?.data));
-    }
+  Future<Result<VerifyCodeEntity>> verifyCode(String resetCode) {
+    return ApiCallHandler.safeApiCall(() => dataSource.verifyCode(resetCode));
   }
+
+
+
+
 }

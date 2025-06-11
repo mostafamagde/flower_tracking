@@ -22,19 +22,16 @@ class ApplyRepoImpl implements ApplyRepository {
 
     ApplyRequestDto requestModel = SignupMappers.toModelRequest(request);
 
-
     Result<ApplyResponseDto> responseModelResult =
     await _signupContractDatasource.applyDriver(requestModel);
 
 
     switch (responseModelResult) {
       case Success<ApplyResponseDto> success:
-
         ApplyResponseEntity responseEntity = SignupMappers.toEntity(
           success.data!,
         );
         return Success(responseEntity);
-
       case Error<ApplyResponseDto> error:
         return Error(error.exception);
     }

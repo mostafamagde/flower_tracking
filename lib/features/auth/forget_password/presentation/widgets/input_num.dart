@@ -25,7 +25,7 @@ class InputNum extends StatelessWidget {
                   color: const Color(0xffCFCFCF),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: viewModel.isValid ? Colors.transparent : AppColors.errorColor,
+                    color: viewModel.isValid ? Colors.transparent : AppColors.error,
                   ),
                 ),
                 margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -65,12 +65,12 @@ class InputNum extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Icon(Icons.info_outlined, color: AppColors.errorColor, size: 12),
+                 Icon(Icons.info_outlined, color: AppColors.error, size: 12),
                 const SizedBox(width: 2),
                 Text(
                   'Invalid code',
                   style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
-                    color: AppColors.errorColor,
+                    color: AppColors.error,
                   ),
                 ),
               ],

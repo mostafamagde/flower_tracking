@@ -5,11 +5,11 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class VerifyCodeUseCase {
-  ForgetPasswordRepo repo;
+ final ForgetPasswordRepo _repo;
 
-  VerifyCodeUseCase({required this.repo});
+  VerifyCodeUseCase( this._repo);
 
   Future<Result<VerifyCodeEntity>> call(String resetCode) async{
-    return await repo.verifyCode(resetCode);
+    return await _repo.verifyCode(resetCode);
   }
 }

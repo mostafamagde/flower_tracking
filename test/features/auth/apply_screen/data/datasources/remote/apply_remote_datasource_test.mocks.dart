@@ -3,16 +3,22 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
-import 'dart:io' as _i7;
+import 'dart:async' as _i8;
+import 'dart:io' as _i10;
 
-import 'package:flower_tracking/core/api_manager/api_manager.dart' as _i4;
+import 'package:flower_tracking/core/api_manager/api_manager.dart' as _i7;
 import 'package:flower_tracking/features/auth/apply_screen/data/models/response/apply_response_dto.dart'
+    as _i6;
+import 'package:flower_tracking/features/auth/forget_password/data/models/forget_password_dto.dart'
+    as _i2;
+import 'package:flower_tracking/features/auth/forget_password/data/models/reset_password_dto.dart'
+    as _i4;
+import 'package:flower_tracking/features/auth/forget_password/data/models/verify_code_dto.dart'
     as _i3;
 import 'package:flower_tracking/features/auth/login/data/model/request/login_request_dto.dart'
-    as _i6;
+    as _i9;
 import 'package:flower_tracking/features/auth/login/data/model/response/login_response_dto.dart'
-    as _i2;
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -29,51 +35,109 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeLoginResponseDto_0 extends _i1.SmartFake
-    implements _i2.LoginResponseDto {
-  _FakeLoginResponseDto_0(Object parent, Invocation parentInvocation)
+class _FakeForgetPasswordDto_0 extends _i1.SmartFake
+    implements _i2.ForgetPasswordDto {
+  _FakeForgetPasswordDto_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeApplyResponseDto_1 extends _i1.SmartFake
-    implements _i3.ApplyResponseDto {
-  _FakeApplyResponseDto_1(Object parent, Invocation parentInvocation)
+class _FakeVerifyCodeDto_1 extends _i1.SmartFake implements _i3.VerifyCodeDto {
+  _FakeVerifyCodeDto_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeResetPasswordDto_2 extends _i1.SmartFake
+    implements _i4.ResetPasswordDto {
+  _FakeResetPasswordDto_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeLoginResponseDto_3 extends _i1.SmartFake
+    implements _i5.LoginResponseDto {
+  _FakeLoginResponseDto_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeApplyResponseDto_4 extends _i1.SmartFake
+    implements _i6.ApplyResponseDto {
+  _FakeApplyResponseDto_4(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [RestClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRestClient extends _i1.Mock implements _i4.RestClient {
+class MockRestClient extends _i1.Mock implements _i7.RestClient {
   MockRestClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.LoginResponseDto> login(_i6.LoginRequestDto? request) =>
+  _i8.Future<_i2.ForgetPasswordDto> forgetPassword(
+    Map<String, dynamic>? email,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#forgetPassword, [email]),
+            returnValue: _i8.Future<_i2.ForgetPasswordDto>.value(
+              _FakeForgetPasswordDto_0(
+                this,
+                Invocation.method(#forgetPassword, [email]),
+              ),
+            ),
+          )
+          as _i8.Future<_i2.ForgetPasswordDto>);
+
+  @override
+  _i8.Future<_i3.VerifyCodeDto> verifyCode(Map<String, dynamic>? body) =>
+      (super.noSuchMethod(
+            Invocation.method(#verifyCode, [body]),
+            returnValue: _i8.Future<_i3.VerifyCodeDto>.value(
+              _FakeVerifyCodeDto_1(
+                this,
+                Invocation.method(#verifyCode, [body]),
+              ),
+            ),
+          )
+          as _i8.Future<_i3.VerifyCodeDto>);
+
+  @override
+  _i8.Future<_i4.ResetPasswordDto> resetPassword(Map<String, dynamic>? body) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [body]),
+            returnValue: _i8.Future<_i4.ResetPasswordDto>.value(
+              _FakeResetPasswordDto_2(
+                this,
+                Invocation.method(#resetPassword, [body]),
+              ),
+            ),
+          )
+          as _i8.Future<_i4.ResetPasswordDto>);
+
+  @override
+  _i8.Future<_i5.LoginResponseDto> login(_i9.LoginRequestDto? request) =>
       (super.noSuchMethod(
             Invocation.method(#login, [request]),
-            returnValue: _i5.Future<_i2.LoginResponseDto>.value(
-              _FakeLoginResponseDto_0(
+            returnValue: _i8.Future<_i5.LoginResponseDto>.value(
+              _FakeLoginResponseDto_3(
                 this,
                 Invocation.method(#login, [request]),
               ),
             ),
           )
-          as _i5.Future<_i2.LoginResponseDto>);
+          as _i8.Future<_i5.LoginResponseDto>);
 
   @override
-  _i5.Future<_i3.ApplyResponseDto> applyDriver(
+  _i8.Future<_i6.ApplyResponseDto> applyDriver(
     String? country,
     String? firstName,
     String? lastName,
     String? vehicleType,
     String? vehicleNumber,
-    _i7.File? vehicleLicense,
+    _i10.File? vehicleLicense,
     String? email,
     String? phone,
     String? nid,
-    _i7.File? nIDImg,
+    _i10.File? nIDImg,
     String? password,
     String? rePassword,
     String? gender,
@@ -94,8 +158,8 @@ class MockRestClient extends _i1.Mock implements _i4.RestClient {
               rePassword,
               gender,
             ]),
-            returnValue: _i5.Future<_i3.ApplyResponseDto>.value(
-              _FakeApplyResponseDto_1(
+            returnValue: _i8.Future<_i6.ApplyResponseDto>.value(
+              _FakeApplyResponseDto_4(
                 this,
                 Invocation.method(#applyDriver, [
                   country,
@@ -115,5 +179,5 @@ class MockRestClient extends _i1.Mock implements _i4.RestClient {
               ),
             ),
           )
-          as _i5.Future<_i3.ApplyResponseDto>);
+          as _i8.Future<_i6.ApplyResponseDto>);
 }

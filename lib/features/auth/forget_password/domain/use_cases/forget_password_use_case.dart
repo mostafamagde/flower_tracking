@@ -6,10 +6,10 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ForgetPasswordUseCase {
-   ForgetPasswordRepo repo;
-  ForgetPasswordUseCase({required this.repo});
+   final ForgetPasswordRepo _repo;
+  ForgetPasswordUseCase(this._repo);
 
   Future<Result<ForgetPasswordEntity>> call(String email) async {
-    return await repo.forgetPassword(email);
+    return await _repo.forgetPassword(email);
   }
 }

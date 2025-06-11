@@ -28,7 +28,7 @@ class NetworkError implements Exception {
 
 class ClientError implements Exception {
   final ErrorModel? errorModel;  // قد يحتوي على تفاصيل الخطأ من العميل
-  ClientError(this.errorModel);
+  ClientError({this.errorModel});
   String getErrorMessage() {
     return errorModel?.message ?? "Client error occurred. Please try again.";
   }

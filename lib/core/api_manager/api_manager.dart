@@ -18,13 +18,13 @@ part 'api_manager.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
-  @POST('forgotPassword')
+  @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordDto> forgetPassword(@Body() Map<String, dynamic> email);
 
-  @POST('verifyResetCode')
+  @POST(ApiConstants.verifyCode)
   Future<VerifyCodeDto> verifyCode(@Body() Map<String, dynamic> body);
 
-  @PUT('resetPassword')
+  @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordDto> resetPassword(@Body() Map<String, dynamic> body);
 
 

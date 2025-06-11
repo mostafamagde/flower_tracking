@@ -5,13 +5,8 @@ part 'reset_password_dto.g.dart';
 
 @JsonSerializable()
 class ResetPasswordDto extends ResetPasswordEntity{
-
-
-  ResetPasswordDto({required super.email, required super.newPassword});
-
+   ResetPasswordDto({required super.email, required super.newPassword});
   factory ResetPasswordDto.fromJson(Map<String, dynamic> json) => _$ResetPasswordDtoFromJson(json);
-
   Map<String, dynamic> toJson() => _$ResetPasswordDtoToJson(this);
-
 }
 

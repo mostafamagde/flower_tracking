@@ -29,7 +29,7 @@ class ApiExecute {
               : ErrorModel(message: "Unknown error");
 
           if (responseCode >= 400 && responseCode < 500) {
-            return Error(ClientError(errorModel));
+            return Error(ClientError(errorModel: errorModel));
           }
 
           if (responseCode >= 500 && responseCode < 600) {

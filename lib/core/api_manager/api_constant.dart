@@ -4,4 +4,7 @@ class ApiConstants {
 
 
   static const String applyDriver = "apply";
+  static const String forgetPassword = "forgotPassword";
+  static const String verifyCode = "verifyResetCode";
+  static const String resetPassword = "resetPassword";
 }
