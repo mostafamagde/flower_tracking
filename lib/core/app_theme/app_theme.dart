@@ -60,5 +60,14 @@ class AppTheme {
         borderSide: BorderSide(color: AppColors.greyColor),
       ),
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        textStyle: TextStyle(color: AppColors.backgroundColor),
+        padding: EdgeInsets.symmetric(vertical: 12,horizontal: 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50)
+        )
+      )
+    )
   );
 }

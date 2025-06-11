@@ -8,7 +8,13 @@ class ServerError implements Exception {
   String getErrorMessage() {
     return errorModel?.message ?? "An unexpected server error occurred";
   }
+
+  @override
+  String toString() {
+    return errorModel?.toString() ?? 'Unknown server error';
+  }
 }
+
 
 class NetworkError implements Exception {
   final String? message;  // رسالة مخصصة لخطأ الشبكة
@@ -22,17 +28,17 @@ class NetworkError implements Exception {
 
 class ClientError implements Exception {
   final ErrorModel? errorModel;  // قد يحتوي على تفاصيل الخطأ من العميل
-
-  ClientError(this.errorModel);
-  @override
-  toString() {
-    return errorModel?.message ?? "this client error";
-  }
-
+  ClientError({this.errorModel});
   String getErrorMessage() {
     return errorModel?.message ?? "Client error occurred. Please try again.";
   }
+  @override
+  String toString() {
+    return errorModel?.toString() ?? 'Unknown client error';
+  }
 }
+
+
 
 class ServerSideError implements Exception {
   final ErrorModel? errorModel;  // تفاصيل الخطأ من الخادم

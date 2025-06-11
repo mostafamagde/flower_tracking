@@ -10,5 +10,6 @@ class StringManager {
   static const String rememberMe = "Remember me";
   static const String forgetPassword = "Forget password?";
   static const String continueBtn = "Continue";
+
   //------------------------------------------------------
 }

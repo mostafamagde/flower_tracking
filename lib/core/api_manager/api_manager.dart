@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flower_tracking/features/auth/forget_password/data/models/forget_password_dto.dart';
+import 'package:flower_tracking/features/auth/forget_password/data/models/reset_password_dto.dart';
+import 'package:flower_tracking/features/auth/forget_password/data/models/verify_code_dto.dart';
 import 'package:flower_tracking/core/api_manager/api_constant.dart';
 import 'package:flower_tracking/features/auth/apply_screen/data/models/response/apply_response_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -14,6 +17,17 @@ part 'api_manager.g.dart';
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
+
+  @POST(ApiConstants.forgetPassword)
+  Future<ForgetPasswordDto> forgetPassword(@Body() Map<String, dynamic> email);
+
+  @POST(ApiConstants.verifyCode)
+  Future<VerifyCodeDto> verifyCode(@Body() Map<String, dynamic> body);
+
+  @PUT(ApiConstants.resetPassword)
+  Future<ResetPasswordDto> resetPassword(@Body() Map<String, dynamic> body);
+
+
 
   @POST(ApiConstants.signInApi)
   Future<LoginResponseDto> login(@Body() LoginRequestDto request);

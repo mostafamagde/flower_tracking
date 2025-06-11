@@ -18,7 +18,6 @@ class ApiExecute {
         case DioExceptionType.connectionError:
         case DioExceptionType.badCertificate:
           return Error(NetworkError("Check your internet connection"));
-
         case DioExceptionType.badResponse:
           if (responseCode == null) {
             return Error(NetworkError("No status code from server"));
@@ -30,7 +29,7 @@ class ApiExecute {
               : ErrorModel(message: "Unknown error");
 
           if (responseCode >= 400 && responseCode < 500) {
-            return Error(ClientError(errorModel));
+            return Error(ClientError(errorModel: errorModel));
           }
 
           if (responseCode >= 500 && responseCode < 600) {
